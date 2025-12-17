@@ -1,0 +1,34 @@
+package arvoredecisao;
+
+public class Arvore {
+	public static void main(String[] args) {
+		// Criação dos nós
+		No matriculado = new No("Aluno está matriculado?");
+		No mediaBoa = new No("Média maior ou igual a 7?");
+		No frequenciaBoa = new No("Frequência maior ou igual a 75%?");
+		No aprovado = new No("Resultado: Aprovado");
+		No reprovado = new No("Resultado: Reprovado");
+		// Ligações da árvore
+		matriculado.sim = mediaBoa;
+		matriculado.nao = reprovado;
+		mediaBoa.sim = frequenciaBoa;
+		mediaBoa.nao = reprovado;
+		frequenciaBoa.sim = aprovado;
+		frequenciaBoa.nao = reprovado;
+		// Simulação da decisão
+		percorrerArvore(matriculado, true, 9.5, 85);
+	}
+	public static void percorrerArvore(No no, boolean matriculado, double media, int frequencia) {
+		if (no.sim == null && no.nao == null) {
+			System.out.println(no.pergunta);
+			return;
+		}
+		if (no.pergunta.contains("matriculado")) {
+			percorrerArvore(matriculado ? no.sim : no.nao, matriculado, media, frequencia);
+		} else if (no.pergunta.contains("Média")) {
+			percorrerArvore(media >= 7.0 ? no.sim : no.nao, matriculado, media, frequencia);
+		} else {
+			percorrerArvore(frequencia >= 75 ? no.sim : no.nao, matriculado, media, frequencia);
+		}
+	}
+}
