@@ -1,0 +1,11 @@
+public class ClassificacaoSimples {
+    public static void main(String[] args) {
+        double media = 6.0;
+        int frequencia = 75;
+        if (media >= 7.0 && frequencia >= 75) {
+            System.out.println("Resultado: Aprovado");
+        } else {
+            System.out.println("Resultado: Reprovado");
+        }
+    }
+}
