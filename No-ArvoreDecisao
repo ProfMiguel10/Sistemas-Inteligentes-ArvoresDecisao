@@ -1,0 +1,11 @@
+package arvoredecisao;
+
+public class No {
+	String pergunta;
+    No sim;
+    No nao;
+
+    No(String pergunta) {
+        this.pergunta = pergunta;
+    }
+}
