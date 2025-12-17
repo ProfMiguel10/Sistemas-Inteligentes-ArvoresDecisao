@@ -1,0 +1,46 @@
+package arvoredecisao;
+
+import java.util.Scanner;
+
+public class AnaliseCredito {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("=== SISTEMA DE ANÁLISE DE CRÉDITO ===");
+        System.out.print("Possui renda fixa? (S/N): ");
+        boolean rendaFixa = sc.next().equalsIgnoreCase("S");
+        System.out.print("Informe a renda mensal (R$): ");
+        double rendaMensal = sc.nextDouble();
+        System.out.print("Nome limpo? (S/N): ");
+        boolean nomeLimpo = sc.next().equalsIgnoreCase("S");
+        System.out.print("Possui histórico de crédito? (S/N): ");
+        boolean historicoCredito = sc.next().equalsIgnoreCase("S");
+        System.out.println("\n--- Resultado da Análise ---");
+        analisarCredito(rendaFixa, rendaMensal, nomeLimpo, historicoCredito);
+        sc.close();
+    }
+    public static void analisarCredito(boolean rendaFixa,double rendaMensal,boolean nomeLimpo, boolean historicoCredito) {
+        if (!rendaFixa) {
+            System.out.println("Crédito RECUSADO.");
+            System.out.println("Motivo: Ausência de renda fixa.");
+            return;
+        }
+        if (!nomeLimpo) {
+            System.out.println("Crédito RECUSADO.");
+            System.out.println("Motivo: Restrições no CPF.");
+            return;
+        }
+        if (rendaMensal >= 7000 && historicoCredito) {
+            System.out.println("Crédito APROVADO.");
+            System.out.println("Limite sugerido: R$ 50.000,00");
+            return;
+        }
+        if (rendaMensal >= 2500) {
+            System.out.println("Crédito em ANÁLISE MANUAL.");
+            System.out.println("Motivo: Perfil intermediário.");
+            return;
+        }
+        System.out.println("Crédito RECUSADO.");
+        System.out.println("Motivo: Renda insuficiente.");
+    }
+}
