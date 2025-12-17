@@ -1,0 +1,15 @@
+public class RegressaoSimples {
+    public static void main(String[] args) {
+        double notaProva = 9.0;
+        double notaFinal;
+        if (notaProva >= 8.5) {
+            notaFinal = 9.5;
+        } else if (notaProva >= 6.0) {
+            notaFinal = 8.0;
+        } else {
+            notaFinal = 6.5;
+        }
+        System.out.println("Nota final estimada: " + notaFinal);
+    }
+}
+
